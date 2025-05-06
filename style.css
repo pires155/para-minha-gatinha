@@ -86,6 +86,7 @@ body {
   transition: transform 0.2s ease;
   border-radius: 12px;
 }
+
 .coracoes {
   position: fixed;
   top: 0;
@@ -117,5 +118,3 @@ body {
     opacity: 0;
   }
 }
-
-
