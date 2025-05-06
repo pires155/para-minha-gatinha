@@ -1,7 +1,7 @@
 function abrirEnvelope() {
     document.getElementById('envelope').classList.toggle('aberto');
   }
-function criarCoracao() {
+  function criarCoracao() {
   const coracoesContainer = document.querySelector('.coracoes');
   const coracao = document.createElement('div');
   coracao.classList.add('coracao');
@@ -15,6 +15,3 @@ function criarCoracao() {
 }
 
 setInterval(criarCoracao, 300);
-
-
-  
