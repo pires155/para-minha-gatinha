@@ -1,67 +1,104 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #ffdde8;
-    font-family:Arial, Helvetica, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  #envelope {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    cursor: pointer;
-  }
-  
-  .base {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 140px;
-    background-color: #f48fb1;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    z-index: 1;
-  }
-  
-  .tampa {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100px;
-    background-color: #f06292;
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    transition: transform 1s ease;
-    z-index: 3;
-  }
-  
-  .carta {
-    position: absolute;
-    top: 30px;
-    left: 10px;
-    right: 10px;
-    height: 130px;
-    background-color: white;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 2;
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform 1s ease, opacity 1s ease;
-  }
-  
-  #envelope.aberto .tampa {
-    transform: rotateX(180deg);
-    transform-origin: top;
-  }
-  
-  #envelope.aberto .carta {
-    transform: translateY(0);
+  margin: 0;
+  padding: 0;
+  background-color: #fff0f5;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden; /* Impede o scroll */
+}
+
+#envelope {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.base {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 140px;
+  background-color: #f48fb1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: 1;
+}
+
+.tampa {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #f06292;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transition: transform 1s ease;
+  z-index: 3;
+}
+
+.carta {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  right: 10px;
+  height: 130px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 2;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+#envelope.aberto .tampa {
+  transform: rotateX(180deg);
+  transform-origin: top;
+}
+
+#envelope.aberto .carta {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Corações caindo */
+.coracao {
+  position: absolute;
+  top: 0;
+  background-image: url('assets/coracao.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  animation: cairCoracoes linear infinite;
+  opacity: 1;
+  z-index: 999;
+}
+
+
+@keyframes cairCoracoes {
+  0% {
+    transform: translateY(-100px);
     opacity: 1;
   }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
 
-  
+
+.coracoes-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* deixa clicar no envelope normalmente */
+  z-index: 999;
+}
